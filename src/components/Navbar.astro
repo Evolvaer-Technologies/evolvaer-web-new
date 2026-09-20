@@ -5,7 +5,7 @@ import BrandLogo from './BrandLogo.astro';
 const currentPath = Astro.url.pathname;
 
 const navLinks = [
-  { name: 'Home', href: '/' },
+//   { name: 'Home', href: '/' },
   { name: 'About', href: '/about' },
   { name: 'What We Do', href: '/what-we-do' },
   { name: 'Ventures', href: '/ventures' },
@@ -87,19 +87,49 @@ const isActive = (href: string) => {
 </header>
 
 <script>
-  const toggleTheme = () => {
-    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    const next = isDark ? 'light' : 'dark';
-    document.documentElement.setAttribute('data-theme', next);
-    localStorage.setItem('evolvaer-theme', next);
-  };
+  function initNavbar() {
+    const toggleTheme = () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      const next = isDark ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('evolvaer-theme', next);
+    };
 
-  document.getElementById('theme-btn')?.addEventListener('click', toggleTheme);
-  document.getElementById('theme-btn-mobile')?.addEventListener('click', toggleTheme);
+    // Bind theme toggles safely with guard checks
+    const themeBtn = document.getElementById('theme-btn');
+    const themeBtnMobile = document.getElementById('theme-btn-mobile');
+    
+    if (themeBtn && !themeBtn.hasAttribute('data-listener')) {
+      themeBtn.setAttribute('data-listener', 'true');
+      themeBtn.addEventListener('click', toggleTheme);
+    }
+    if (themeBtnMobile && !themeBtnMobile.hasAttribute('data-listener')) {
+      themeBtnMobile.setAttribute('data-listener', 'true');
+      themeBtnMobile.addEventListener('click', toggleTheme);
+    }
 
-  const toggle = document.getElementById('mobile-toggle');
-  const drawer = document.getElementById('mobile-menu');
-  toggle?.addEventListener('click', () => drawer?.classList.toggle('open'));
+    // Mobile menu toggle & automatic drawer close on link click
+    const toggle = document.getElementById('mobile-toggle');
+    const drawer = document.getElementById('mobile-menu');
+    
+    if (toggle && drawer && !toggle.hasAttribute('data-listener')) {
+      toggle.setAttribute('data-listener', 'true');
+      toggle.addEventListener('click', () => {
+        drawer.classList.toggle('open');
+      });
+
+      // Close drawer automatically when clicking any mobile link
+      const mobileLinks = drawer.querySelectorAll('a');
+      mobileLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          drawer.classList.remove('open');
+        });
+      });
+    }
+  }
+
+  // Runs on initial load and after every View Transition page swap
+  document.addEventListener('astro:page-load', initNavbar);
 </script>
 
 <style>

@@ -2,6 +2,7 @@
 // src/pages/contact.astro
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Navbar from '../components/Navbar.astro';
+import ContactHero from '../components/ContactHero.astro';
 import ContactForm from '../components/ContactForm.astro';
 import DigitalCard from '../components/DigitalCard.astro';
 import Footer from '../components/Footer.astro';
@@ -14,13 +15,7 @@ import Footer from '../components/Footer.astro';
   <Navbar />
   <main>
     <section class="page-header bg-grid">
-      <div class="container">
-        <span class="eyebrow">Initiate Contact</span>
-        <h1>Start a Consultation</h1>
-        <p class="lead">
-          Submit your project specifications or reach out directly to our leadership team.
-        </p>
-      </div>
+      <ContactHero />
     </section>
 
     <section class="contact-section">

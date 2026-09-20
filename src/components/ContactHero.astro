@@ -1,0 +1,210 @@
+---
+// src/components/ContactHero.astro
+---
+
+<section class="contact-hero-wrapper bg-grid">
+  <!-- Atmospheric Glow Accents -->
+  <div class="ambient-glow-left" aria-hidden="true"></div>
+  <div class="ambient-glow-right" aria-hidden="true"></div>
+
+  <div class="evolvaer-container hero-inner">
+    <!-- Top Metadata / Telemetry Row -->
+    <div class="telemetry-bar">
+      <div class="status-pill">
+        <span class="pulse-dot"></span>
+        <span class="status-text">Intake channels: Open / Active</span>
+      </div>
+    </div>
+
+    <!-- Main Hero Copy -->
+    <div class="hero-copy-block">
+      <h1>
+        Start a <span class="gradient-text">conversation.</span>
+      </h1>
+      <p class="lead-text">
+        Whether you are exploring a technical partnership, custom software architecture, or venture collaboration, our engineering leadership is ready to engage.
+      </p>
+    </div>
+
+    <!-- Metric / Expectation Strip -->
+    <div class="expectation-strip">
+      <div class="expectation-cell">
+        <span class="e-label">Response Window</span>
+        <strong class="e-val">&lt; 48 Business Hours</strong>
+      </div>
+      <div class="expectation-cell">
+        <span class="e-label">Direct Channel</span>
+        <strong class="e-val">Engineering Founders</strong>
+      </div>
+      <div class="expectation-cell">
+        <span class="e-label">Engagement Mode</span>
+        <strong class="e-val">Confidential Review</strong>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact-hero-wrapper {
+    position: relative;
+    padding-top: 7rem;
+    padding-bottom: 4.5rem;
+    border-bottom: 1px solid var(--color-border);
+    overflow: hidden;
+  }
+
+  /* Atmospheric Backdrops */
+  .ambient-glow-left {
+    position: absolute;
+    left: -8rem;
+    top: 10%;
+    width: 28rem;
+    height: 28rem;
+    border-radius: 50%;
+    background: rgba(37, 99, 235, 0.05);
+    filter: blur(130px);
+    pointer-events: none;
+  }
+
+  .ambient-glow-right {
+    position: absolute;
+    right: -8rem;
+    top: 5%;
+    width: 28rem;
+    height: 28rem;
+    border-radius: 50%;
+    background: rgba(34, 211, 238, 0.04);
+    filter: blur(130px);
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    position: relative;
+    z-index: 2;
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  /* Telemetry Bar */
+  .telemetry-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+
+  .status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    padding: 0.35rem 0.9rem;
+    border-radius: 9999px;
+  }
+
+  .pulse-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background-color: var(--color-teal);
+    box-shadow: 0 0 10px var(--color-teal);
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0% { transform: scale(0.95); opacity: 0.8; }
+    50% { transform: scale(1.2); opacity: 1; box-shadow: 0 0 14px var(--color-teal); }
+    100% { transform: scale(0.95); opacity: 0.8; }
+  }
+
+  .status-text {
+    font-size: var(--text-xs);
+    font-weight: var(--weight-semibold);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--color-text-muted);
+  }
+
+  .coord-label {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: var(--color-text-muted);
+    opacity: 0.6;
+  }
+
+  /* Hero Copy Block */
+  .hero-copy-block {
+    max-width: 780px;
+    margin-bottom: 3.5rem;
+  }
+
+  h1 {
+    font-size: clamp(2.8rem, 5vw, 4.8rem);
+    font-weight: var(--weight-bold);
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+    margin-bottom: 1.25rem;
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-teal) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .lead-text {
+    font-size: clamp(1rem, 1.8vw, 1.15rem);
+    color: var(--color-text-muted);
+    line-height: 1.75;
+    max-width: 660px;
+  }
+
+  /* Expectation Strip */
+  .expectation-strip {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background-color: var(--color-border);
+    border: 1px solid var(--color-border);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+
+  .expectation-cell {
+    background-color: var(--color-surface);
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .e-label {
+    font-size: 0.65rem;
+    font-weight: var(--weight-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--color-text-muted);
+  }
+
+  .e-val {
+    font-size: var(--text-sm);
+    font-weight: var(--weight-semibold);
+    color: var(--color-text-main);
+  }
+
+  /* Responsive Adjustments */
+  @media (max-width: 800px) {
+    .expectation-strip {
+      grid-template-columns: 1fr;
+    }
+    .telemetry-bar {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+  }
+</style>
