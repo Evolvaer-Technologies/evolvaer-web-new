@@ -1,0 +1,240 @@
+---
+// src/components/Navbar.astro
+import BrandLogo from './BrandLogo.astro';
+
+const currentPath = Astro.url.pathname;
+
+const navLinks = [
+  { name: 'Home', href: '/' },
+  { name: 'About', href: '/about' },
+  { name: 'What We Do', href: '/what-we-do' },
+  { name: 'Ventures', href: '/ventures' },
+  { name: 'Research', href: '/research' },
+  { name: 'Careers', href: '/careers' },
+];
+
+const isActive = (href: string) => {
+  if (href === '/' && currentPath === '/') return true;
+  if (href !== '/' && currentPath.startsWith(href)) return true;
+  return false;
+};
+---
+
+<header class="navbar-wrapper">
+  <div class="nav-container">
+    <a href="/" class="brand-link" aria-label="Evolvaer Technologies Home">
+      <BrandLogo />
+    </a>
+
+    <!-- Desktop Nav -->
+    <nav class="desktop-nav">
+      <ul class="nav-items">
+        {navLinks.map((link) => (
+          <li>
+            <a 
+              href={link.href} 
+              class={`nav-link ${isActive(link.href) ? 'active' : ''}`}
+            >
+              {link.name}
+            </a>
+          </li>
+        ))}
+      </ul>
+      <div class="cta-cluster">
+        <a 
+          href="/contact" 
+          class={`btn-primary ${currentPath.startsWith('/contact') ? 'btn-active' : ''}`}
+        >
+          Contact
+        </a>
+        <button id="theme-btn" aria-label="Toggle theme" class="theme-toggle">◐</button>
+      </div>
+    </nav>
+
+    <!-- Mobile Burger -->
+    <div class="mobile-actions">
+      <button id="theme-btn-mobile" aria-label="Toggle theme" class="theme-toggle">◐</button>
+      <button id="mobile-toggle" aria-label="Open navigation menu" class="burger-btn">
+        <span class="line"></span>
+        <span class="line"></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Drawer -->
+  <div id="mobile-menu" class="mobile-drawer">
+    <ul class="mobile-list">
+      {navLinks.map((link) => (
+        <li>
+          <a 
+            href={link.href} 
+            class={`mobile-link ${isActive(link.href) ? 'active' : ''}`}
+          >
+            {link.name}
+          </a>
+        </li>
+      ))}
+      <li>
+        <a 
+          href="/contact" 
+          class={`mobile-link contact-text ${currentPath.startsWith('/contact') ? 'active' : ''}`}
+        >
+          Contact
+        </a>
+      </li>
+    </ul>
+  </div>
+</header>
+
+<script>
+  const toggleTheme = () => {
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    const next = isDark ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('evolvaer-theme', next);
+  };
+
+  document.getElementById('theme-btn')?.addEventListener('click', toggleTheme);
+  document.getElementById('theme-btn-mobile')?.addEventListener('click', toggleTheme);
+
+  const toggle = document.getElementById('mobile-toggle');
+  const drawer = document.getElementById('mobile-menu');
+  toggle?.addEventListener('click', () => drawer?.classList.toggle('open'));
+</script>
+
+<style>
+  .navbar-wrapper {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    background: rgba(var(--color-bg), 0.88);
+    border-bottom: 1px solid var(--color-border);
+  }
+  .nav-container {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 1rem 1.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .brand-link {
+    text-decoration: none;
+  }
+  .desktop-nav {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+  .nav-items {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 1.5rem;
+  }
+  .nav-link {
+    font-size: var(--text-sm);
+    font-weight: var(--weight-semibold);
+    color: var(--color-text-muted);
+    position: relative;
+    padding: 0.35rem 0;
+    transition: color 0.2s ease;
+  }
+  .nav-link:hover, .nav-link.active {
+    color: var(--color-primary);
+  }
+  .nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--color-primary);
+    border-radius: 2px;
+  }
+  .cta-cluster {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .btn-primary {
+    background: var(--color-primary);
+    color: #ffffff !important;
+    padding: 0.5rem 1.25rem;
+    border-radius: 6px;
+    font-size: var(--text-sm);
+    font-weight: var(--weight-semibold);
+    transition: opacity 0.2s, box-shadow 0.2s;
+  }
+  .btn-primary:hover {
+    opacity: 0.92;
+  }
+  .btn-primary.btn-active {
+    box-shadow: 0 0 0 2px var(--color-bg), 0 0 0 4px var(--color-primary);
+  }
+  .theme-toggle {
+    background: transparent;
+    border: 1px solid var(--color-border);
+    color: var(--color-text-main);
+    padding: 0.35rem 0.65rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    transition: border-color 0.2s;
+  }
+  .theme-toggle:hover {
+    border-color: var(--color-primary);
+  }
+  .mobile-actions {
+    display: none;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .burger-btn {
+    background: transparent;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 0.25rem;
+  }
+  .line {
+    width: 22px;
+    height: 2px;
+    background: var(--color-text-main);
+  }
+  .mobile-drawer {
+    display: none;
+    background: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+    padding: 1.5rem;
+  }
+  .mobile-drawer.open {
+    display: block;
+  }
+  .mobile-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+  .mobile-link {
+    font-size: var(--text-base);
+    font-weight: var(--weight-semibold);
+    color: var(--color-text-muted);
+  }
+  .mobile-link.active, .mobile-link:hover {
+    color: var(--color-primary);
+  }
+  .contact-text {
+    color: var(--color-primary);
+  }
+  @media (max-width: 960px) {
+    .desktop-nav { display: none; }
+    .mobile-actions { display: flex; }
+  }
+</style>

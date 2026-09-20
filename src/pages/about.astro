@@ -1,0 +1,623 @@
+---
+// src/pages/about.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+const capabilities = [
+  {
+    num: "01",
+    label: "Research",
+    title: "Understand before building.",
+    desc: "Investigate technologies, needs, markets and possibilities before making assumptions about the solution."
+  },
+  {
+    num: "02",
+    label: "Engineering",
+    title: "Turn possibility into systems.",
+    desc: "Prototype, test and engineer the technical foundations needed to transform promising ideas into usable technology."
+  },
+  {
+    num: "03",
+    label: "Ventures",
+    title: "Build what deserves to exist.",
+    desc: "Develop validated opportunities into products, platforms and companies capable of creating lasting value."
+  }
+];
+
+const operatingModel = [
+  { num: "01", title: "Research", desc: "We investigate emerging technologies, changing behaviours and meaningful problems before deciding what deserves to be built." },
+  { num: "02", title: "Engineer", desc: "We turn promising ideas into prototypes, systems and technical foundations that can survive outside the laboratory." },
+  { num: "03", title: "Build", desc: "When an opportunity proves valuable, we develop it into a product, platform or independent venture." },
+  { num: "04", title: "Scale", desc: "We strengthen technology, product thinking and commercial foundations so useful ideas can grow sustainably." }
+];
+
+const principles = [
+  { num: "01", title: "Purposeful", desc: "We pursue technology where it can create meaningful value, not simply because it is new." },
+  { num: "02", title: "Inventive", desc: "We stay curious, challenge assumptions and remain willing to explore unconventional possibilities." },
+  { num: "03", title: "Trustworthy", desc: "We believe useful technology must be responsible, understandable and worthy of the people who rely on it." },
+  { num: "04", title: "Collaborative", desc: "The strongest ideas emerge when different disciplines, experiences and perspectives are allowed to intersect." }
+];
+
+const evolution = [
+  "Explore what is changing",
+  "Understand what matters",
+  "Test what is possible",
+  "Engineer what is useful",
+  "Build what deserves to exist"
+];
+---
+
+<BaseLayout 
+  title="About | Evolvaer Technologies" 
+  description="Built to explore what comes next. Learn how Evolvaer connects research, engineering, and venture building."
+>
+  <Navbar />
+
+  <main>
+    <!-- 1. HERO SECTION -->
+    <section class="about-hero bg-grid">
+      <div class="ambient-glow"></div>
+      <div class="container hero-content">
+        <div class="hero-left">
+          <div class="tag-row">
+            <span class="line-blue"></span>
+            <span class="tag-text">About Evolvaer</span>
+          </div>
+          <h1>
+            Built to explore<br />
+            what comes <span class="gradient-text">next.</span>[cite: 1]
+          </h1>
+          <div class="status-row">
+            <span class="status-dot"></span>
+            <span class="status-text">Research · Engineering · Venture Building</span>[cite: 1]
+          </div>
+        </div>
+
+        <div class="hero-right">
+          <p class="lead-text">
+            Evolvaer Technologies is an emerging technology company that researches, engineers and builds products around ideas with the potential to create meaningful real-world value.[cite: 1]
+          </p>
+          <p class="body-text">
+            We work across the space between technological possibility and practical usefulness — exploring what is changing, understanding what matters and building what proves worth pursuing.
+          </p>
+          <div class="hero-actions">
+            <a href="#story" class="btn-primary">Discover our thinking ↓</a>
+            <a href="/what-we-do" class="link-forward">What we do →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="system-bar">
+        <div class="container system-bar-inner">
+          <div class="metric">
+            <span class="metric-label">Mode</span>
+            <span class="metric-val">Continuous exploration</span>
+          </div>
+          <div class="metric">
+            <span class="metric-label">Focus</span>
+            <span class="metric-val">Emerging technology</span>
+          </div>
+          <div class="metric">
+            <span class="metric-label">Direction</span>
+            <span class="metric-val">Ideas into impact</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. OUR STORY & WHY WE EXIST -->
+    <section id="story" class="story-section">
+      <div class="container">
+        <div class="story-header">
+          <div class="tag-row">
+            <span class="line-teal"></span>
+            <span class="tag-text">Why we exist</span>
+          </div>
+          <h2>
+            Technology moves quickly.<br />
+            Useful innovation requires <span class="gradient-text">something more.</span>
+          </h2>
+          <div class="story-columns">
+            <p>
+              New capabilities appear constantly, but not every technological breakthrough becomes a meaningful product. The difficult work lies in understanding where technology intersects with a genuine problem, a useful experience and a viable opportunity.
+            </p>
+            <p>
+              Evolvaer exists to work in that space. We explore emerging technologies, investigate their potential, engineer practical systems and build the ideas that prove worthy of going further.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. CONNECTED CAPABILITIES -->
+    <section class="capabilities-section">
+      <div class="container">
+        <div class="section-title">
+          <span class="eyebrow">What Evolvaer Is</span>
+          <h2>One company. Three connected capabilities.</h2>
+          <p class="subtitle">Rather than separating research, technology development and company creation, we connect them. Each strengthens the others.</p>
+        </div>
+
+        <div class="grid-3">
+          {capabilities.map((c) => (
+            <div class="card-item">
+              <span class="card-step">{c.num} — {c.label}</span>
+              <h3>{c.title}</h3>
+              <p>{c.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. OPERATING MODEL (HOW WE OPERATE) -->
+    <section class="operating-section">
+      <div class="container">
+        <div class="section-title">
+          <span class="eyebrow">How We Operate</span>
+          <h2>Ideas move through a system.</h2>
+          <p class="subtitle">We do not treat research, engineering and venture building as isolated activities. Ideas move through a connected sequence where each stage earns the next.</p>
+        </div>
+
+        <div class="grid-4">
+          {operatingModel.map((item, i) => (
+            <div class="step-card">
+              <span class="step-badge">Stage 0{i + 1}</span>
+              <h3>{item.title}</h3>
+              <p>{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. PRINCIPLES -->
+    <section class="principles-section">
+      <div class="container">
+        <div class="section-title">
+          <span class="eyebrow">Principles</span>[cite: 1]
+          <h2>What changes. What doesn't.</h2>
+          <p class="subtitle">Technologies, products and opportunities will evolve. The principles that guide how we explore and build should remain much more stable.</p>
+        </div>
+
+        <div class="grid-4">
+          {principles.map((p) => (
+            <div class="card-item">
+              <span class="card-step">{p.num}</span>
+              <h3>{p.title}</h3>
+              <p>{p.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. EVOLUTION BY DESIGN & AMBITION -->
+    <section class="dark-banner">
+      <div class="container">
+        <div class="tag-row">
+          <span class="line-teal"></span>
+          <span class="tag-text">Evolution by design</span>
+        </div>
+        <h2 class="banner-heading">
+          Progress is a process of <span class="gradient-text">evolution.</span>
+        </h2>
+        <p class="banner-lead">
+          Evolvaer is built around continuous exploration: ideas evolve through evidence, experimentation, engineering and use. We are comfortable changing direction when what we learn demands it.
+        </p>
+
+        <div class="evolution-list">
+          {evolution.map((item, index) => (
+            <div class="evolution-row">
+              <span class="evo-idx">0{index + 1}</span>
+              <span class="evo-name">{item}</span>
+              <span class="evo-arrow">↳</span>
+            </div>
+          ))}
+        </div>
+
+        <div class="ambition-box">
+          <span class="eyebrow">Long-Term Ambition</span>
+          <h2>
+            To build an enduring technology company <span class="gradient-text">that keeps evolving.</span>
+          </h2>
+          <p>
+            Not defined by one product. Not limited to one technology. Built to keep exploring where meaningful possibilities emerge.
+          </p>
+          <div class="ambition-actions">
+            <a href="/what-we-do" class="btn-primary">What we do →</a>
+            <a href="/ventures" class="btn-outline">Explore ventures ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  /* Base Layout Constraints */
+  .container {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  /* Taglines and Accents */
+  .tag-row {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+  }
+  .line-blue {
+    display: inline-block;
+    width: 2.5rem;
+    height: 1px;
+    background-color: var(--color-primary);
+  }
+  .line-teal {
+    display: inline-block;
+    width: 2.5rem;
+    height: 1px;
+    background-color: var(--color-teal);
+  }
+  .tag-text {
+    font-size: var(--text-xs);
+    font-weight: var(--weight-semibold);
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    color: var(--color-text-muted);
+  }
+  .eyebrow {
+    font-size: var(--text-xs);
+    font-weight: var(--weight-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--color-teal);
+    display: block;
+    margin-bottom: 0.75rem;
+  }
+  .gradient-text {
+    background: linear-gradient(to right, var(--color-primary), var(--color-teal));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* 1. Hero Section */
+  .about-hero {
+    position: relative;
+    padding-top: 6rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid var(--color-border);
+    overflow: hidden;
+  }
+  .hero-content {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 3.5rem;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+  }
+  .hero-left h1 {
+    font-size: clamp(2.6rem, 4.8vw, 4.8rem);
+    font-weight: var(--weight-bold);
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+  }
+  .status-row {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-top: 2rem;
+  }
+  .status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--color-teal);
+    box-shadow: 0 0 14px var(--color-teal);
+  }
+  .status-text {
+    font-size: var(--text-xs);
+    font-weight: var(--weight-semibold);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--color-text-muted);
+  }
+  .hero-right {
+    border-left: 2px solid var(--color-border);
+    padding-left: 2rem;
+  }
+  .lead-text {
+    font-size: var(--text-lg);
+    line-height: 1.7;
+    color: var(--color-text-main);
+    margin-bottom: 1rem;
+  }
+  .body-text {
+    font-size: var(--text-sm);
+    line-height: 1.7;
+    color: var(--color-text-muted);
+    margin-bottom: 2rem;
+  }
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  .link-forward {
+    font-size: var(--text-sm);
+    font-weight: var(--weight-semibold);
+    color: var(--color-text-muted);
+    transition: color 0.2s;
+  }
+  .link-forward:hover {
+    color: var(--color-primary);
+  }
+  .system-bar {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--color-border);
+  }
+  .system-bar-inner {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+  }
+  .metric {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  .metric-label {
+    font-size: var(--text-xs);
+    font-weight: var(--weight-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--color-text-muted);
+    opacity: 0.7;
+  }
+  .metric-val {
+    font-size: var(--text-sm);
+    font-weight: var(--weight-semibold);
+    color: var(--color-text-main);
+  }
+
+  /* 2. Story Section */
+  .story-section {
+    padding: 6rem 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .story-header h2 {
+    font-size: clamp(2.2rem, 3.8vw, 3.8rem);
+    font-weight: var(--weight-bold);
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    margin-bottom: 2rem;
+  }
+  .story-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    font-size: var(--text-base);
+    color: var(--color-text-muted);
+    line-height: 1.8;
+  }
+
+  /* 3 & 5. Capabilities and Principles */
+  .capabilities-section, .principles-section {
+    padding: 6rem 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .section-title {
+    margin-bottom: 3.5rem;
+    max-width: 800px;
+  }
+  .section-title h2 {
+    font-size: var(--text-3xl);
+    font-weight: var(--weight-bold);
+    letter-spacing: -0.02em;
+    margin-bottom: 0.75rem;
+  }
+  .subtitle {
+    font-size: var(--text-base);
+    color: var(--color-text-muted);
+    line-height: 1.6;
+  }
+  .grid-3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem;
+  }
+  .card-item {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 2.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    transition: transform 0.25s ease, border-color 0.25s ease;
+  }
+  .card-item:hover {
+    transform: translateY(-3px);
+    border-color: var(--color-primary);
+  }
+  .card-step {
+    font-size: var(--text-xs);
+    font-weight: var(--weight-bold);
+    color: var(--color-primary);
+    letter-spacing: 0.08em;
+  }
+  .card-item h3 {
+    font-size: var(--text-xl);
+    font-weight: var(--weight-semibold);
+  }
+  .card-item p {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    line-height: 1.6;
+  }
+
+  /* 4. Operating Model */
+  .operating-section {
+    padding: 6rem 0;
+    background-color: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+  }
+  .grid-4 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.25rem;
+  }
+  .step-card {
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+  .step-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--color-teal);
+  }
+  .step-badge {
+    font-size: var(--text-xs);
+    font-weight: var(--weight-bold);
+    color: var(--color-teal);
+    letter-spacing: 0.08em;
+  }
+  .step-card h3 {
+    font-size: var(--text-lg);
+    font-weight: var(--weight-semibold);
+  }
+  .step-card p {
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+    line-height: 1.6;
+  }
+
+  /* 6. Dark Banner & Evolution */
+  .dark-banner {
+    background-color: #07111D;
+    color: #ffffff;
+    padding: 6rem 0;
+  }
+  .banner-heading {
+    font-size: clamp(2.2rem, 3.8vw, 3.8rem);
+    font-weight: var(--weight-bold);
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    margin-bottom: 1.5rem;
+  }
+  .banner-lead {
+    font-size: var(--text-base);
+    color: rgba(255, 255, 255, 0.65);
+    max-width: 700px;
+    line-height: 1.7;
+    margin-bottom: 3.5rem;
+  }
+  .evolution-list {
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    margin-bottom: 5rem;
+  }
+  .evolution-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .evo-idx {
+    font-size: var(--text-xs);
+    font-weight: var(--weight-bold);
+    color: var(--color-teal);
+    width: 3rem;
+  }
+  .evo-name {
+    font-size: var(--text-lg);
+    font-weight: var(--weight-semibold);
+    color: rgba(255, 255, 255, 0.85);
+    flex-grow: 1;
+  }
+  .evo-arrow {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.3);
+  }
+
+  /* Ambition Card */
+  .ambition-box {
+    max-width: 780px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 4rem 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    background-color: rgba(255, 255, 255, 0.02);
+  }
+  .ambition-box h2 {
+    font-size: clamp(1.8rem, 3.2vw, 2.8rem);
+    font-weight: var(--weight-bold);
+    line-height: 1.2;
+    margin: 1rem 0;
+  }
+  .ambition-box p {
+    font-size: var(--text-sm);
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.7;
+    margin-bottom: 2rem;
+  }
+  .ambition-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .btn-primary {
+    background-color: var(--color-primary);
+    color: #ffffff !important;
+    padding: 0.75rem 1.75rem;
+    border-radius: 6px;
+    font-size: var(--text-sm);
+    font-weight: var(--weight-semibold);
+    display: inline-block;
+    transition: opacity 0.2s;
+  }
+  .btn-primary:hover {
+    opacity: 0.92;
+  }
+  .btn-outline {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #ffffff !important;
+    padding: 0.75rem 1.75rem;
+    border-radius: 6px;
+    font-size: var(--text-sm);
+    font-weight: var(--weight-semibold);
+    display: inline-block;
+    transition: background-color 0.2s;
+  }
+  .btn-outline:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+  }
+
+  /* Responsive Adjustments */
+  @media (max-width: 900px) {
+    .hero-content, .story-columns {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    .hero-right {
+      border-left: none;
+      border-top: 2px solid var(--color-border);
+      padding-left: 0;
+      padding-top: 1.5rem;
+    }
+  }
+</style>

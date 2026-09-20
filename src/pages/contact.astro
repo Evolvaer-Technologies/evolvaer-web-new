@@ -1,0 +1,86 @@
+---
+// src/pages/contact.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../components/Navbar.astro';
+import ContactForm from '../components/ContactForm.astro';
+import DigitalCard from '../components/DigitalCard.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout 
+  title="Contact | Evolvaer Technologies"
+  description="Initiate a project consultation with the Evolvaer Technologies engineering team."
+>
+  <Navbar />
+  <main>
+    <section class="page-header bg-grid">
+      <div class="container">
+        <span class="eyebrow">Initiate Contact</span>
+        <h1>Start a Consultation</h1>
+        <p class="lead">
+          Submit your project specifications or reach out directly to our leadership team.
+        </p>
+      </div>
+    </section>
+
+    <section class="contact-section">
+      <div class="container split-layout">
+        <div class="card-column">
+          <DigitalCard />
+        </div>
+        <div class="form-column">
+          <ContactForm />
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .page-header {
+    padding: 5rem 1.5rem;
+    text-align: center;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .container {
+    max-width: 1180px;
+    margin: 0 auto;
+  }
+  .eyebrow {
+    font-size: var(--text-xs);
+    font-weight: var(--weight-semibold);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--color-teal);
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  h1 {
+    font-size: clamp(var(--text-3xl), 4vw, var(--text-4xl));
+    font-weight: var(--weight-bold);
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+  }
+  .lead {
+    font-size: var(--text-lg);
+    color: var(--color-text-muted);
+    max-width: 680px;
+    margin: 0 auto;
+  }
+  .contact-section {
+    padding: 4rem 1.5rem 6rem;
+  }
+  .split-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.25fr;
+    gap: 3.5rem;
+    align-items: start;
+  }
+  @media (max-width: 900px) {
+    .split-layout {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+</style>

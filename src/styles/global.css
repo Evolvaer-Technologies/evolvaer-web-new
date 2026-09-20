@@ -1,0 +1,80 @@
+/* src/styles/global.css */
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&family=Poppins:wght@400;600;700&display=swap');
+
+:root {
+  --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Weights */
+  --weight-regular: 400;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  /* Typography Scale */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 2rem;
+  --text-4xl: 2.75rem;
+  --text-5xl: 3.5rem;
+
+  /* Light Theme Palette */
+  --color-bg: #FFFFFF;
+  --color-surface: #F8FAFC;
+  --color-border: #E2E8F0;
+  --color-text-main: #0A1D2F;     /* Deep Navy */
+  --color-text-muted: #64748B;    /* Slate */
+  --color-primary: #2563EB;       /* Azure Blue */
+  --color-teal: #10B981;          /* Emerald Teal */
+  --color-violet: #7C3AED;        /* Violet */
+  --color-accent: #F59E0B;        /* Amber */
+  --glow-color: rgba(37, 99, 235, 0.10);
+}
+
+html[data-theme='dark'] {
+  --font-main: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Dark Theme Palette */
+  --color-bg: #0D1117;           /* Space Blue */
+  --color-surface: #161B22;
+  --color-border: #30363D;
+  --color-text-main: #F0F6FC;
+  --color-text-muted: #94A3B8;   /* Steel Gray */
+  --color-primary: #3882F6;      /* Neon Blue */
+  --color-teal: #22D3EE;         /* Aurora Green / Cyan */
+  --color-violet: #A855F7;       /* Electric Purple */
+  --color-accent: #F97316;       /* Sunset Orange */
+  --glow-color: rgba(56, 130, 246, 0.16);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--color-bg);
+  color: var(--color-text-main);
+  line-height: 1.6;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Background Engineering Grid */
+.bg-grid {
+  background-size: 36px 36px;
+  background-image: radial-gradient(circle, var(--color-border) 1px, transparent 1px);
+}

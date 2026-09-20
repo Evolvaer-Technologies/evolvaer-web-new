@@ -1,11 +1,159 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+// src/pages/index.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../components/Navbar.astro';
+import Hero from '../components/Hero.astro';
+import BrandValues from '../components/BrandValues.astro';
+import Footer from '../components/Footer.astro';
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<BaseLayout 
+  title="Evolvaer Technologies | Exploring what's next. Building what matters."
+  description="We research, engineer and commercialise emerging technologies into products and companies that solve real-world problems."
+>
+  <Navbar />
+  <main>
+    <Hero />
+    <BrandValues />
+
+    <!-- Feature Matrix Preview Section -->
+    <section class="overview-section">
+      <div class="inner-container">
+        <div class="section-heading">
+          <span class="eyebrow">Enterprise Overview</span>
+          <h2>Applied Innovation Across the Stack</h2>
+          <p class="sub">Select an area below to explore our detailed operations and technical methodologies.</p>
+        </div>
+
+        <div class="nav-cards-grid">
+          <a href="/about" class="nav-card">
+            <span class="card-num">01</span>
+            <h3>About Evolvaer</h3>
+            <p>Our founding principles, vision, and leadership directing computational research into market execution.</p>
+            <span class="arrow-link">Explore Identity →</span>
+          </a>
+
+          <a href="/what-we-do" class="nav-card">
+            <span class="card-num">02</span>
+            <h3>What We Do</h3>
+            <p>Our 6-phase engineering lifecycle: Explore, Research, Engineer, Build, Scale, and deliver measurable Impact.</p>
+            <span class="arrow-link">View Methodology →</span>
+          </a>
+
+          <a href="/ventures" class="nav-card">
+            <span class="card-num">03</span>
+            <h3>Ventures</h3>
+            <p>Independent ecosystem platforms and scalable multi-tenant SaaS products incubated in-house.</p>
+            <span class="arrow-link">View Portfolio →</span>
+          </a>
+
+          <a href="/research" class="nav-card">
+            <span class="card-num">04</span>
+            <h3>Research</h3>
+            <p>Empirical natural language processing investigations, semantic alignment, and zero-latency system models.</p>
+            <span class="arrow-link">Read Research →</span>
+          </a>
+
+          <a href="/careers" class="nav-card">
+            <span class="card-num">05</span>
+            <h3>Careers</h3>
+            <p>Opportunities for builders and software engineers who value foundational simplicity and clean code.</p>
+            <span class="arrow-link">Join Our Team →</span>
+          </a>
+
+          <a href="/contact" class="nav-card highlight">
+            <span class="card-num">06</span>
+            <h3>Initiate Contact</h3>
+            <p>Submit direct technical requirements or request a confidential engineering consultation.</p>
+            <span class="arrow-link">Open Request Form →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .overview-section {
+    padding: 6rem 1.5rem;
+  }
+  .inner-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .section-heading {
+    text-align: center;
+    margin-bottom: 3.5rem;
+  }
+  .eyebrow {
+    font-size: var(--text-xs);
+    font-weight: var(--weight-semibold);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--color-teal);
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  h2 {
+    font-size: var(--text-3xl);
+    font-weight: var(--weight-bold);
+    letter-spacing: -0.02em;
+    color: var(--color-text-main);
+  }
+  .sub {
+    font-size: var(--text-base);
+    color: var(--color-text-muted);
+    margin-top: 0.5rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .nav-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem;
+  }
+  .nav-card {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    padding: 2.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    text-decoration: none;
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease;
+  }
+  .nav-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--color-primary);
+  }
+  .nav-card.highlight {
+    background: linear-gradient(135deg, var(--color-surface) 0%, rgba(37, 99, 235, 0.05) 100%);
+    border-color: rgba(37, 99, 235, 0.25);
+  }
+  .card-num {
+    font-size: var(--text-xs);
+    font-weight: var(--weight-bold);
+    color: var(--color-primary);
+    letter-spacing: 0.08em;
+  }
+  .nav-card h3 {
+    font-size: var(--text-xl);
+    font-weight: var(--weight-semibold);
+    color: var(--color-text-main);
+  }
+  .nav-card p {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    flex-grow: 1;
+  }
+  .arrow-link {
+    font-size: var(--text-xs);
+    font-weight: var(--weight-bold);
+    color: var(--color-teal);
+    margin-top: 0.5rem;
+  }
+</style>

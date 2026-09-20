@@ -1,0 +1,87 @@
+---
+// src/pages/privacy.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout title="Privacy Policy | Evolvaer Technologies">
+  <Navbar />
+  <main class="legal-page">
+    <div class="container">
+      <span class="eyebrow">Legal & Compliance</span>
+      <h1>Privacy Policy</h1>
+      <p class="last-updated">Last Updated: September 2026</p>
+
+      <section class="legal-body">
+        <h2>1. Overview</h2>
+        <p>
+          Evolvaer Technologies Ltd ("Evolvaer", "we", "us", or "our") respects your privacy and is committed to protecting your personal data in accordance with the UK General Data Protection Regulation (UK GDPR) and the Data Protection Act 2018.
+        </p>
+
+        <h2>2. Information We Collect</h2>
+        <p>
+          We operate an informational corporate website with no behavioral tracking cookies or third-party advertising scripts. The only personal data we collect is information you deliberately provide via our contact and consultation request forms (such as your name, work email address, and project specifications).
+        </p>
+
+        <h2>3. How We Use Your Information</h2>
+        <p>
+          Data submitted through our contact form is used strictly to evaluate project inquiries, respond to technical communications, or review speculative career applications. We never sell, rent, or monetize your contact information.
+        </p>
+
+        <h2>4. Data Retention & Security</h2>
+        <p>
+          We employ industry-standard encryption protocols (TLS/HTTPS) across all transmissions. Inquiries are retained only for as long as necessary to fulfill the operational business relationship or legal record-keeping obligations.
+        </p>
+
+        <h2>5. Your Rights</h2>
+        <p>
+          Under UK data protection laws, you have the right to request access to, rectification of, or erasure of your personal data. To exercise these rights, please contact our data team directly at <strong>ugo@evolvaer.com</strong>[cite: 1].
+        </p>
+      </section>
+    </div>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .legal-page {
+    padding: 5rem 1.5rem 6rem;
+  }
+  .container {
+    max-width: 840px;
+    margin: 0 auto;
+  }
+  .eyebrow {
+    font-size: var(--text-xs);
+    font-weight: var(--weight-semibold);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--color-teal);
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  h1 {
+    font-size: clamp(var(--text-3xl), 4vw, var(--text-4xl));
+    font-weight: var(--weight-bold);
+    letter-spacing: -0.02em;
+    margin-bottom: 0.5rem;
+  }
+  .last-updated {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    margin-bottom: 3rem;
+  }
+  .legal-body h2 {
+    font-size: var(--text-xl);
+    font-weight: var(--weight-bold);
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+  }
+  .legal-body p {
+    font-size: var(--text-base);
+    color: var(--color-text-muted);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+  }
+</style>

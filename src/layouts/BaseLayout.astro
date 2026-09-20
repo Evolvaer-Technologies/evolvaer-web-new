@@ -1,0 +1,85 @@
+---
+// src/layouts/BaseLayout.astro
+import '../styles/global.css';
+import { ClientRouter } from 'astro:transitions';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+}
+
+const { 
+  title = "Evolvaer Technologies | Exploring what's next. Building what matters.",
+  description = "We research, engineer and commercialise emerging technologies into products and companies that solve real-world problems.",
+  image = "/evolvaer-icon.png"
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://evolvaer.com');
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="canonical" href={canonicalURL} />
+    <link rel="icon" type="image/png" href="/evolvaer-icon.png" />
+    
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <ClientRouter />
+
+    <!-- 1. Blocking inline script: Runs before paint on first load & after page swaps -->
+    <script is:inline>
+      function setInitialTheme() {
+        const saved = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const theme = saved || (prefersDark ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', theme);
+      }
+      setInitialTheme();
+      document.addEventListener('astro:after-swap', setInitialTheme);
+    </script>
+  </head>
+  <body class="flex-column-body">
+    <slot />
+
+    <!-- 2. Interactive script: Binds click handlers on initial load & after every page navigation -->
+    <script>
+      function setupThemeToggles() {
+        const buttons = document.querySelectorAll('.theme-toggle');
+        
+        buttons.forEach((btn) => {
+          // Remove old listeners to avoid duplicates
+          btn.replaceWith(btn.cloneNode(true));
+        });
+
+        // Re-query newly cloned buttons
+        document.querySelectorAll('.theme-toggle').forEach((btn) => {
+          btn.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+            const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            document.documentElement.setAttribute('data-theme', nextTheme);
+            localStorage.setItem('theme', nextTheme);
+          });
+        });
+      }
+
+      // Run on initial page load
+      setupThemeToggles();
+
+      // Run every time Astro navigates to a new page
+      document.addEventListener('astro:page-load', setupThemeToggles);
+    </script>
+  </body>
+</html>
+
+<style>
+  .flex-column-body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+</style>

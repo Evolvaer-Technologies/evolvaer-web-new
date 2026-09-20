@@ -1,0 +1,157 @@
+---
+// src/components/Footer.astro
+import BrandLogo from './BrandLogo.astro';
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand-col">
+        <BrandLogo />
+        <p class="brand-motto">
+          We research, engineer and commercialise emerging technologies into products and companies that solve real-world problems.
+        </p>
+        <div class="motto-tag">
+          Exploring what's <span>next.</span> Building what <span>matters.</span>
+        </div>
+      </div>
+
+      <div class="footer-links-grid">
+        <div class="footer-col">
+          <span class="col-title">Navigation</span>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About Us</a></li>
+            <li><a href="/what-we-do">What We Do</a></li>
+            <li><a href="/ventures">Ventures</a></li>
+            <li><a href="/research">Research</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <span class="col-title">Initiatives</span>
+          <ul>
+            <li><a href="/ventures#zentra">Zentra SaaS</a></li>
+            <li><a href="/ventures#cribwise">CribWise Platform</a></li>
+            <li><a href="/research#nlp">Perspective Matching</a></li>
+            <li><a href="/research#edge">Edge Architecture</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <span class="col-title">Company</span>
+          <ul>
+            <li><a href="/careers">Careers</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/privacy">Privacy Notice</a></li>
+            <li><a href="/terms">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>&copy; {currentYear} Evolvaer Technologies Ltd. All rights reserved.</span>
+      <span class="registered-text">Registered in England & Wales</span>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    border-top: 1px solid var(--color-border);
+    background-color: var(--color-surface);
+    padding: 5rem 1.5rem 2.5rem;
+    margin-top: auto;
+  }
+  .footer-inner {
+    max-width: 1240px;
+    margin: 0 auto;
+  }
+  .footer-top {
+    display: grid;
+    grid-template-columns: 1.4fr 2fr;
+    gap: 4rem;
+    margin-bottom: 4rem;
+  }
+  .footer-brand-col {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+  .brand-motto {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    max-width: 380px;
+  }
+  .motto-tag {
+    font-size: var(--text-xs);
+    font-weight: var(--weight-bold);
+    letter-spacing: 0.05em;
+    color: var(--color-text-main);
+  }
+  .motto-tag span:first-child {
+    color: var(--color-primary);
+  }
+  .motto-tag span:last-child {
+    color: var(--color-teal);
+  }
+  .footer-links-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  .col-title {
+    font-size: var(--text-xs);
+    font-weight: var(--weight-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--color-teal);
+    display: block;
+    margin-bottom: 1.25rem;
+  }
+  .footer-col ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .footer-col a {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    transition: color 0.2s ease;
+  }
+  .footer-col a:hover {
+    color: var(--color-primary);
+  }
+  .footer-bottom {
+    border-top: 1px solid var(--color-border);
+    padding-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  @media (max-width: 900px) {
+    .footer-top {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+  }
+  @media (max-width: 600px) {
+    .footer-links-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    .footer-bottom {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+</style>

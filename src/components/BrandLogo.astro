@@ -1,0 +1,53 @@
+---
+// src/components/BrandLogo.astro
+interface Props {
+  className?: string;
+}
+const { className = "" } = Astro.props;
+---
+<div class={`brand-container ${className}`}>
+  <!-- Geometric Logo Icon -->
+  <svg class="brand-icon" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Blue outer 'E' / frame element -->
+    <path d="M15 15H85V35H40V45H75V65H40V85H15V15Z" fill="var(--color-primary)" />
+    <!-- Teal intersecting 'T' element -->
+    <path d="M45 45H90V65H70V95H45V45Z" fill="var(--color-teal)" />
+  </svg>
+
+  <div class="brand-text">
+    <span class="brand-title">EVOLVAER</span>
+    <span class="brand-sub">TECHNOLOGIES</span>
+  </div>
+</div>
+
+<style>
+  .brand-container {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+    user-select: none;
+  }
+  .brand-icon {
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+  }
+  .brand-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+  }
+  .brand-title {
+    font-size: var(--text-lg);
+    font-weight: var(--weight-bold);
+    letter-spacing: 0.12em;
+    color: var(--color-text-main);
+  }
+  .brand-sub {
+    font-size: 0.6rem;
+    letter-spacing: 0.28em;
+    font-weight: var(--weight-semibold);
+    color: var(--color-teal);
+  }
+</style>

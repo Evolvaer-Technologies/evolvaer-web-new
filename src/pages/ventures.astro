@@ -1,0 +1,386 @@
+---
+// src/pages/ventures.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+const ventureThesis = [
+  { number: "01", label: "Problem", title: "Communication can break down.", description: "People do not always communicate in ways that are immediately understood by the people, systems or environments around them.", accent: "#2563EB" },
+  { number: "02", label: "Opportunity", title: "Technology can help interpret.", description: "Emerging AI capabilities create new possibilities for recognising communication cues and supporting clearer understanding.", accent: "#7C3AED" },
+  { number: "03", label: "Direction", title: "Make understanding easier.", description: "Adaptcues explores how intelligent software can support clearer interpretation and more accessible communication.", accent: "#22D3EE" },
+];
+
+const ventureTags = ["Communication", "Accessibility", "AI", "Human-centred technology"];
+
+const portfolioMetrics = [
+  { label: "Status", value: "In development" },
+  { label: "Origin", value: "Evolvaer" },
+  { label: "Model", value: "Product venture" },
+];
+
+const portfolioNodes = [
+  { label: "Evolvaer", sublabel: "Venture core", accent: "#2563EB", active: true },
+  { label: "Adaptcues", sublabel: "In development", accent: "#22D3EE", active: true },
+  { label: "Future", sublabel: "Opportunity", accent: "#7C3AED", dashed: true },
+];
+
+const portfolioPrinciples = [
+  { number: "01", title: "Opportunity-led", description: "New ventures begin with meaningful opportunities we believe are worth investigating — not with a requirement to fill the portfolio.", accent: "#2563EB" },
+  { number: "02", title: "Technology-enabled", description: "We look for places where emerging or evolving technology can create a genuinely better way of solving a problem.", accent: "#7C3AED" },
+  { number: "03", title: "Evidence-earned", description: "Ideas move deeper into the portfolio only as research, technical progress and real-world learning strengthen the case for building.", accent: "#22D3EE" },
+  { number: "04", title: "Impact-oriented", description: "The goal is not simply to launch products. We want to build technology that can create durable usefulness and real-world value.", accent: "#10B981" },
+];
+
+const capabilities = [
+  { number: "01", label: "Research", title: "Understand.", description: "Investigate the problem, users, constraints, technology and opportunity before significant commitment.", contribution: "Problem understanding · Technical feasibility · Opportunity validation", accent: "#7C3AED" },
+  { number: "02", label: "Technology", title: "Engineer.", description: "Build the technical foundations required to turn validated ideas into reliable, adaptable systems.", contribution: "Architecture · Software · AI & data · Integrations", accent: "#2563EB" },
+  { number: "03", label: "Product", title: "Shape.", description: "Turn technical capability into a coherent product experience built around real people and situations.", contribution: "Product thinking · Experience · Prototyping · Iteration", accent: "#22D3EE" },
+  { number: "04", label: "Venture", title: "Grow.", description: "Develop the commercial and operating foundations around products and opportunities that continue to prove themselves.", contribution: "Venture design · Commercial model · Operations · Growth readiness", accent: "#10B981" },
+];
+
+const stages = [
+  { number: "01", label: "Explore", description: "Understand the opportunity.", accent: "#7C3AED", complete: true },
+  { number: "02", label: "Validate", description: "Test whether the evidence holds.", accent: "#22D3EE", complete: true },
+  { number: "03", label: "Build", description: "Turn evidence into a usable product.", accent: "#2563EB", active: true },
+  { number: "04", label: "Venture", description: "Build around what continues to work.", accent: "#10B981" },
+];
+---
+
+<BaseLayout 
+  title="Ventures | Evolvaer Technologies" 
+  description="Explore Evolvaer's portfolio ventures, starting with Adaptcues—intelligent technology for clearer communication."
+>
+  <Navbar />
+
+  <main class="ventures-root">
+    <!-- 1. FEATURED VENTURE (ADAPTCUES) -->
+    <section class="ventures-section bg-grid">
+      <div class="ambient-glow"></div>
+      <div class="container">
+        <div class="section-header-bar">
+          <div class="tag-row">
+            <span class="mono-num">01</span>
+            <span class="line-blue"></span>
+            <span class="tag-text">Portfolio</span>
+          </div>
+          <span class="header-meta">Featured venture</span>
+        </div>
+
+        <div class="featured-grid">
+          <div class="featured-copy">
+            <div class="status-pill-row">
+              <span class="live-dot"></span>
+              <span class="status-label">In development</span>
+            </div>
+            
+            <h1>Adaptcues</h1>
+            <p class="lead-text">Exploring how intelligent technology can make communication easier to understand.</p>
+            <p class="body-text">Adaptcues is an Evolvaer software venture at the intersection of communication, accessibility and intelligent technology.</p>
+            
+            <div class="tag-cluster">
+              {ventureTags.map(tag => (
+                <span class="pill">{tag}</span>
+              ))}
+            </div>
+
+            <div class="metrics-box">
+              <div class="m-cell">
+                <span class="m-label">Type</span>
+                <strong class="m-val">Software venture</strong>
+              </div>
+              <div class="m-cell">
+                <span class="m-label">Focus</span>
+                <strong class="m-val">Research + product</strong>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-showcase">
+            <img src="/images/adaptcues-research.png" alt="Adaptcues product concept" class="showcase-img" />
+            <div class="showcase-overlay"></div>
+            <div class="showcase-caption">
+              <div>
+                <span class="caption-eyebrow">Product exploration</span>
+                <p class="caption-title">Human-centred intelligent software for clearer communication.</p>
+              </div>
+              <span class="caption-right">Evolvaer / Adaptcues</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Thesis -->
+        <div class="thesis-grid">
+          <div class="thesis-left">
+            <span class="eyebrow">Why this venture</span>
+            <h3>Start with the human problem, not the technology.</h3>
+            <p>Communication affects independence, participation and human connection. The technology matters only if it can make that experience meaningfully better.</p>
+          </div>
+          <div class="thesis-cards">
+            {ventureThesis.map(item => (
+              <div class="card-item">
+                <div class="card-top">
+                  <div class="c-badge" style={`color:${item.accent}; border-color:${item.accent}33; background:${item.accent}0A;`}>{item.number}</div>
+                  <span class="c-label" style={`color:${item.accent}`}>{item.label}</span>
+                </div>
+                <h4>{item.title}</h4>
+                <p>{item.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. VENTURE STAGES (ADAPTCUES STATUS) -->
+    <section class="section border-b">
+      <div class="container">
+        <div class="stages-intro">
+          <div>
+            <div class="tag-row">
+              <span class="mono-num">02</span>
+              <span class="line-blue"></span>
+              <span class="tag-text">Status</span>
+            </div>
+            <h2>Currently in the <span class="gradient-text">build</span> stage.</h2>
+          </div>
+          <p class="subhead">Adaptcues has moved beyond early exploration into active product and technology development. Research, engineering and user learning are now being used to strengthen what gets built next.</p>
+        </div>
+
+        <div class="stages-matrix">
+          {stages.map((stage) => (
+            <div class={`stage-node ${stage.active ? 'active-node' : ''}`}>
+              <div class="node-header">
+                <div class="node-icon" style={`color:${stage.accent}; border-color:${stage.accent}40;`}>
+                  {stage.complete ? '✓' : stage.active ? '●' : '○'}
+                </div>
+                <span class="node-num" style={`color:${stage.accent}`}>{stage.number}</span>
+              </div>
+              <span class="node-label" style={`color:${stage.accent}`}>{stage.label}</span>
+              <h3>{stage.description}</h3>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. HOW VENTURES EMERGE -->
+    <section class="section surface-bg border-b">
+      <div class="container">
+        <div class="emerge-intro">
+          <div>
+            <div class="tag-row">
+              <span class="mono-num" style="color:#7C3AED">03</span>
+              <span class="line-violet"></span>
+              <span class="tag-text" style="color:#7C3AED">How ventures emerge</span>
+            </div>
+            <h2>Ideas have to earn their way <span class="gradient-text">forward.</span></h2>
+          </div>
+          <p class="subhead">We increase our commitment as evidence gets stronger. An opportunity moves forward through research, technical progress and real-world learning — not enthusiasm alone.</p>
+        </div>
+
+        <div class="capabilities-matrix">
+          {capabilities.map(c => (
+            <div class="cap-card">
+              <div class="node-header">
+                <div class="node-icon" style={`color:${c.accent}; border-color:${c.accent}40; background:${c.accent}0A;`}>✦</div>
+                <span class="node-num" style={`color:${c.accent}`}>{c.number}</span>
+              </div>
+              <span class="node-label" style={`color:${c.accent}`}>{c.label}</span>
+              <h3>{c.title}</h3>
+              <p>{c.description}</p>
+              <div class="cap-contrib">{c.contribution}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. FUTURE VENTURES & PORTFOLIO HORIZON -->
+    <section id="future-ventures" class="section border-b">
+      <div class="container">
+        <div class="horizon-intro">
+          <div>
+            <div class="tag-row">
+              <span class="mono-num">04</span>
+              <span class="line-blue"></span>
+              <span class="tag-text">Future ventures</span>
+            </div>
+            <h2>One venture is only the <span class="gradient-text">beginning.</span></h2>
+          </div>
+          <p class="subhead">Evolvaer is being built to explore more than one technology, problem or market. Adaptcues is one venture emerging from that model — not the boundary of what the company can become.</p>
+        </div>
+
+        <div class="portfolio-system-grid">
+          <div class="active-vent-card">
+            <div>
+              <div class="flex justify-between items-center">
+                <span class="card-meta-label">Active Venture</span>
+                <span class="pill text-teal border-teal/30">Venture 01</span>
+              </div>
+              <h3 class="vent-title">Adaptcues</h3>
+              <p class="vent-desc">An Evolvaer software venture being developed from identified opportunity through research, engineering and product development.</p>
+            </div>
+            <div class="metrics-footer">
+                {portfolioMetrics.map(metric => (
+                    <div class="metric-block">
+                    <span class="m-label">{metric.label}</span>
+                    <strong class="m-val">{metric.value}</strong>
+                    </div>
+                ))}
+            </div>
+          </div>
+
+          <div class="pipeline-stack">
+            <div class="card p-6 bg-surface">
+              <span class="eyebrow" style="color:#7C3AED">Pipeline</span>
+              <h4 class="text-lg font-semibold mt-2 mb-1">Emerging opportunities</h4>
+              <p class="text-xs text-muted leading-relaxed">Other opportunities can remain in exploration and research until the evidence is strong enough to justify building.</p>
+            </div>
+            <div class="card p-6 bg-surface">
+              <span class="eyebrow" style="color:#10B981">Portfolio model</span>
+              <h4 class="text-lg font-semibold mt-2 mb-1">Built to expand</h4>
+              <p class="text-xs text-muted leading-relaxed">Evolvaer is not structured around one permanent product. The portfolio can evolve as new opportunities prove themselves.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- What we look for -->
+        <div class="mt-20">
+          <div class="tag-row mb-6">
+            <span class="mono-num text-teal">05</span>
+            <span class="line-teal"></span>
+            <span class="tag-text text-teal">What we look for</span>
+          </div>
+          <h3 class="text-2xl font-semibold tracking-tight mb-8">The sector can change. The standard should not.</h3>
+          
+          <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+            {portfolioPrinciples.map(p => (
+              <div class="card-item">
+                <span class="font-mono text-xs font-bold" style={`color:${p.accent}`}>{p.number}</span>
+                <h4 class="text-base font-semibold mt-4 mb-2">{p.title}</h4>
+                <p class="text-xs text-muted leading-relaxed">{p.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. BOTTOM CTA -->
+    <section class="section py-16 bg-[#07111D] text-white">
+      <div class="container flex flex-wrap justify-between items-center gap-6">
+        <div>
+          <span class="text-[0.5rem] font-mono uppercase tracking-widest text-[#67E8F9]">Evolvaer Ventures</span>
+          <h2 class="text-3xl font-bold tracking-tight mt-1 text-white">Build what <span class="gradient-text">deserves to exist.</span></h2>
+        </div>
+        <div class="flex gap-3 flex-wrap">
+          <a href="/contact" class="btn-primary">Start a conversation →</a>
+          <a href="/research" class="btn-outline">Explore our research ↗</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  /* Base Layout & Tokens */
+  .container { max-width: 1240px; margin: 0 auto; padding: 0 1.5rem; }
+  .section { padding-top: 5.5rem; padding-bottom: 5.5rem; }
+  .ventures-section { padding-top: 6.5rem; padding-bottom: 5.5rem; position: relative; border-bottom: 1px solid var(--color-border); }
+  .surface-bg { background-color: var(--color-surface); }
+  .border-b { border-bottom: 1px solid var(--color-border); }
+  
+  .text-main { color: var(--color-text-main); }
+  .text-muted { color: var(--color-text-muted); }
+  .text-teal { color: var(--color-teal); }
+
+  .tag-row { display: inline-flex; align-items: center; gap: 0.6rem; margin-bottom: 0.75rem; }
+  .tag-text { font-size: var(--text-xs); font-weight: var(--weight-semibold); text-transform: uppercase; letter-spacing: 0.2em; color: var(--color-text-muted); }
+  .mono-num { font-family: monospace; font-size: var(--text-xs); color: var(--color-primary); }
+  .line-blue { width: 1.75rem; height: 1px; background-color: var(--color-primary); opacity: 0.4; }
+  .line-violet { width: 1.75rem; height: 1px; background-color: #7C3AED; opacity: 0.4; }
+  .line-teal { width: 1.75rem; height: 1px; background-color: var(--color-teal); opacity: 0.4; }
+  
+  .pill { font-family: monospace; font-size: 0.58rem; text-transform: uppercase; padding: 0.2rem 0.6rem; border: 1px solid var(--color-border); border-radius: 9999px; background: var(--color-bg); }
+  .gradient-text { background: linear-gradient(to right, var(--color-primary), var(--color-teal)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+  h1 { font-size: clamp(2.5rem, 4.5vw, 4.2rem); font-weight: var(--weight-bold); line-height: 1.05; letter-spacing: -0.04em; margin: 0.5rem 0; }
+  h2 { font-size: clamp(1.8rem, 3.2vw, 2.8rem); font-weight: var(--weight-bold); letter-spacing: -0.03em; line-height: 1.15; }
+  .lead-text { font-size: var(--text-base); color: var(--color-text-main); line-height: 1.7; margin-bottom: 0.75rem; }
+  .body-text { font-size: var(--text-sm); color: var(--color-text-muted); line-height: 1.7; }
+
+  /* Featured Venture Styles */
+  .section-header-bar { display: flex; justify-content: space-between; align-items: center; padding-bottom: 1.25rem; border-bottom: 1px solid var(--color-border); margin-bottom: 3rem; }
+  .header-meta { font-family: monospace; font-size: 0.42rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--color-text-muted); }
+  .featured-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 3.5rem; align-items: center; }
+  .status-pill-row { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem; }
+  .live-dot { width: 8px; height: 8px; border-radius: 50%; background-color: #10B981; box-shadow: 0 0 10px #10B981; }
+  .status-label { font-size: 0.48rem; font-weight: var(--weight-semibold); text-transform: uppercase; letter-spacing: 0.18em; color: #059669; }
+  .tag-cluster { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1.5rem 0; }
+  .metrics-box { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--color-border); border-radius: 10px; overflow: hidden; max-width: 420px; margin-top: 1.5rem; }
+  .m-cell { background: var(--color-surface); padding: 0.85rem 1rem; }
+  .m-label { font-size: 0.4rem; font-weight: bold; text-transform: uppercase; letter-spacing: 0.12em; color: var(--color-text-muted); display: block; }
+  .m-val { font-size: 0.7rem; font-weight: var(--weight-semibold); margin-top: 0.2rem; display: block; }
+
+  .product-showcase { position: relative; min-height: 400px; border-radius: 20px; border: 1px solid var(--color-border); background: #0A1D2F; overflow: hidden; }
+  .showcase-img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; }
+  .showcase-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(7, 17, 27, 0.8), transparent 60%); }
+  .showcase-caption { position: absolute; bottom: 1.5rem; left: 1.5rem; right: 1.5rem; display: flex; justify-content: space-between; align-items: flex-end; color: #fff; }
+  .caption-eyebrow { font-size: 0.43rem; font-mono: monospace; text-transform: uppercase; letter-spacing: 0.16em; color: #67E8F9; display: block; }
+  .caption-title { font-size: 0.75rem; font-weight: 500; color: rgba(255,255,255,0.9); margin-top: 0.25rem; max-width: 320px; line-height: 1.4; }
+  .caption-right { font-family: monospace; font-size: 0.4rem; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.4); display: none; }
+  @media(min-width: 640px) { .caption-right { display: block; } }
+
+  /* Thesis Grid */
+  .thesis-grid { margin-top: 5rem; padding-top: 3.5rem; border-top: 1px solid var(--color-border); display: grid; grid-template-columns: 0.55fr 1.45fr; gap: 3rem; align-items: start; }
+  .thesis-left h3 { font-size: 1.6rem; font-weight: var(--weight-bold); letter-spacing: -0.03em; margin: 0.5rem 0 1rem; line-height: 1.2; }
+  .thesis-left p { font-size: var(--text-xs); color: var(--color-text-muted); line-height: 1.7; }
+  .thesis-cards { display: grid; md:grid-cols-3 gap-4; grid-template-columns: repeat(3, 1fr); }
+  .card-item { background-color: var(--color-surface); border: 1px solid var(--color-border); border-radius: 12px; padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between; }
+  .card-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+  .c-badge { width: 2rem; height: 2rem; border-radius: 8px; border: 1px solid; display: flex; align-items: center; justify-content: center; font-size: var(--text-xs); font-weight: bold; }
+  .c-label { font-family: monospace; font-size: 0.45rem; text-transform: uppercase; letter-spacing: 0.12em; }
+  .card-item h4 { font-size: var(--text-base); font-weight: var(--weight-semibold); margin-bottom: 0.5rem; }
+  .card-item p { font-size: var(--text-xs); color: var(--color-text-muted); line-height: 1.6; }
+
+  /* Stages & Capabilities Matrices */
+  .stages-intro, .emerge-intro, .horizon-intro { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 3rem; align-items: flex-end; margin-bottom: 3rem; }
+  .subhead { font-size: var(--text-sm); color: var(--color-text-muted); line-height: 1.7; }
+  
+  .stages-matrix, .capabilities-matrix { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid var(--color-border); border-radius: 16px; overflow: hidden; background: var(--color-surface); }
+  .stage-node, .cap-card { padding: 1.5rem; border-right: 1px solid var(--color-border); display: flex; flex-direction: column; justify-content: space-between; }
+  .stage-node:last-child, .cap-card:last-child { border-right: none; }
+  .node-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem; }
+  .node-icon { width: 2rem; height: 2rem; border-radius: 50%; border: 1px solid; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; }
+  .node-num { font-family: monospace; font-size: 0.45rem; }
+  .node-label { font-size: 0.45rem; font-weight: bold; text-transform: uppercase; letter-spacing: 0.16em; display: block; margin-bottom: 0.3rem; }
+  .stage-node h3, .cap-card h3 { font-size: var(--text-sm); font-weight: var(--weight-semibold); color: var(--color-text-main); line-height: 1.5; }
+  .cap-card h3 { font-size: var(--text-lg); margin-bottom: 0.5rem; }
+  .cap-card p { font-size: var(--text-xs); color: var(--color-text-muted); line-height: 1.6; margin-bottom: 1rem; }
+  .cap-contrib { border-top: 1px solid var(--color-border); padding-top: 0.75rem; font-family: monospace; font-size: 0.48rem; color: var(--color-text-muted); }
+  .active-node { background-color: rgba(37, 99, 235, 0.04); }
+
+  /* Portfolio System Grid */
+  .portfolio-system-grid { display: grid; grid-template-columns: 1.3fr 0.7fr; gap: 1.5rem; align-items: stretch; }
+  .active-vent-card { background-color: var(--color-surface); border: 1px solid var(--color-border); border-radius: 20px; padding: 2.5rem; display: flex; flex-direction: column; justify-content: space-between; }
+  .vent-title { font-size: clamp(2.5rem, 4vw, 4rem); font-weight: var(--weight-bold); letter-spacing: -0.04em; margin-bottom: 1rem; }
+  .vent-desc { font-size: var(--text-sm); color: var(--color-text-muted); line-height: 1.7; max-width: 500px; }
+  .metrics-footer { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--color-border); border-radius: 10px; overflow: hidden; margin-top: 2.5rem; }
+  .metric-block { background: var(--color-bg); padding: 0.85rem 1rem; }
+  .pipeline-stack { display: flex; flex-direction: column; gap: 1.5rem; }
+
+  /* Buttons */
+  .btn-primary { background-color: var(--color-primary); color: #ffffff !important; padding: 0.65rem 1.5rem; border-radius: 9999px; font-size: var(--text-sm); font-weight: var(--weight-semibold); transition: opacity 0.2s; display: inline-flex; align-items: center; text-decoration: none; }
+  .btn-primary:hover { opacity: 0.92; }
+  .btn-outline { border: 1px solid rgba(255, 255, 255, 0.2); color: #ffffff !important; padding: 0.65rem 1.5rem; border-radius: 9999px; font-size: var(--text-sm); font-weight: var(--weight-semibold); display: inline-flex; align-items: center; text-decoration: none; transition: background-color 0.2s; }
+  .btn-outline:hover { background-color: rgba(255, 255, 255, 0.08); }
+
+  /* Responsive Adjustments */
+  @media (max-width: 1024px) {
+    .featured-grid, .thesis-grid, .stages-intro, .emerge-intro, .horizon-intro, .portfolio-system-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .stages-matrix, .capabilities-matrix, .thesis-cards { grid-template-columns: 1fr; }
+    .stage-node, .cap-card { border-right: none; border-bottom: 1px solid var(--color-border); }
+  }
+</style>

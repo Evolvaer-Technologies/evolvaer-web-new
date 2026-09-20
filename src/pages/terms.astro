@@ -1,0 +1,82 @@
+---
+// src/pages/terms.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout title="Terms of Service | Evolvaer Technologies">
+  <Navbar />
+  <main class="legal-page">
+    <div class="container">
+      <span class="eyebrow">Terms of Use</span>
+      <h1>Terms of Service</h1>
+      <p class="last-updated">Last Updated: September 2026</p>
+
+      <section class="legal-body">
+        <h2>1. Acceptance of Terms</h2>
+        <p>
+          By accessing or using the website of Evolvaer Technologies Ltd, you agree to be bound by these Terms of Service and all applicable laws and regulations.
+        </p>
+
+        <h2>2. Intellectual Property</h2>
+        <p>
+          The materials contained on this website, including software architectures, research abstracts, brand marks, graphics, and technical specifications, are the intellectual property of Evolvaer Technologies Ltd and are protected by applicable copyright and trademark law[cite: 1].
+        </p>
+
+        <h2>3. Disclaimer</h2>
+        <p>
+          The materials on this site are provided for informational and preliminary commercial evaluation purposes. While we strive for accuracy, Evolvaer makes no warranties, expressed or implied, regarding the completeness or suitability of the information for specific external deployments without a signed master service agreement.
+        </p>
+
+        <h2>4. Governing Law</h2>
+        <p>
+          These terms and conditions are governed by and construed in accordance with the laws of England and Wales, and any disputes relating to these terms shall be subject to the exclusive jurisdiction of the courts of England and Wales.
+        </p>
+      </section>
+    </div>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .legal-page {
+    padding: 5rem 1.5rem 6rem;
+  }
+  .container {
+    max-width: 840px;
+    margin: 0 auto;
+  }
+  .eyebrow {
+    font-size: var(--text-xs);
+    font-weight: var(--weight-semibold);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--color-teal);
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  h1 {
+    font-size: clamp(var(--text-3xl), 4vw, var(--text-4xl));
+    font-weight: var(--weight-bold);
+    letter-spacing: -0.02em;
+    margin-bottom: 0.5rem;
+  }
+  .last-updated {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    margin-bottom: 3rem;
+  }
+  .legal-body h2 {
+    font-size: var(--text-xl);
+    font-weight: var(--weight-bold);
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+  }
+  .legal-body p {
+    font-size: var(--text-base);
+    color: var(--color-text-muted);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+  }
+</style>

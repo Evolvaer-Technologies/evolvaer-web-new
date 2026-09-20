@@ -1,0 +1,632 @@
+---
+// src/pages/careers.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+const pillars = [
+  {
+    num: "01",
+    tag: "Autonomy",
+    title: "Direct system ownership.",
+    desc: "We don't hand down fragmented Jira tickets. Engineers hold end-to-end stewardship from theoretical modeling to production infrastructure.",
+    accent: "var(--color-primary)"
+  },
+  {
+    num: "02",
+    tag: "Rigor",
+    title: "First-principles engineering.",
+    desc: "We avoid framework churn and superficial abstraction layers. We value deterministic state, lean client payloads, and algorithmic precision.",
+    accent: "var(--color-teal)"
+  },
+  {
+    num: "03",
+    tag: "Impact",
+    title: "Ventures that deserve to exist.",
+    desc: "We build commercial software designed to solve structural bottlenecks in distributed multi-tenancy, academic ecosystems, and automated intelligence.",
+    accent: "var(--color-violet)"
+  }
+];
+
+const lifecycle = [
+  { step: "01", name: "Explore", task: "Probe edge behaviors & problem domains" },
+  { step: "02", name: "Challenge", task: "Stress-test assumptions with interdisciplinary peers" },
+  { step: "03", name: "Engineer", task: "Build clean, type-safe, sub-millisecond systems" },
+  { step: "04", name: "Empirical Feedback", task: "Measure telemetry & benchmark performance" },
+  { step: "05", name: "Compound", task: "Harden architectures into durable ventures" }
+];
+
+const coreDomains = [
+  { domain: "Distributed Architectures", stack: "Node.js · TypeScript · Isolated Multi-Tenancy" },
+  { domain: "Scientific Intelligence", stack: "Python · PyTorch · Semantic Transformer Embeddings" },
+  { domain: "Zero-Overhead Web Fabrics", stack: "Astro · Static Edge Delivery · Vanilla CSS Tokens" }
+];
+
+interface Role {
+  id: string;
+  title: string;
+  department: string;
+  location: string;
+  type: string;
+}
+
+const openRoles: Role[] = [];
+const hasRoles = openRoles.length > 0;
+---
+
+<BaseLayout
+  title="Careers | Evolvaer Technologies"
+  description="Join our engineering team building durable software systems, applied NLP models, and scalable digital ventures."
+>
+  <Navbar />
+
+  <main class="careers-root">
+    <!-- 1. HERO SECTION -->
+    <section class="careers-hero bg-grid">
+      <div class="ambient-glow"></div>
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <div class="badge-row">
+            <span class="pulse-dot"></span>
+            <span class="badge-label">Engineering Culture & Talent</span>
+          </div>
+          <h1>
+            Build software that<br />
+            <span class="gradient-text">survives the test of time.</span>
+          </h1>
+          <p class="lead">
+            Evolvaer Technologies is an emerging technologies company operating at the frontier of theoretical research and resilient production architecture. We build platforms designed to endure, not hype cycles.
+          </p>
+          <div class="cta-cluster">
+            <a href="#roles" class="btn-primary">View Open Roles</a>
+            <a href="#speculative-form" class="btn-outline">Speculative Submission</a>
+          </div>
+        </div>
+
+        <!-- Telemetry Terminal Card -->
+        <div class="terminal-card">
+          <div class="terminal-header">
+            <div class="dots"><span></span><span></span><span></span></div>
+            <span class="terminal-title">evolvaer_sys::runtime_matrix</span>
+          </div>
+          <div class="terminal-body">
+            <p class="code-line"><span class="c-teal">const</span> company = <span class="c-blue">'Evolvaer Technologies'</span>;</p>
+            <p class="code-line"><span class="c-teal">const</span> focus = [<span class="c-violet">'Research'</span>, <span class="c-violet">'Engineer'</span>, <span class="c-violet">'Build'</span>, <span class="c-violet">'Scale'</span>];</p>
+            <div class="terminal-divider"></div>
+            <p class="term-status">> CURRENT_CAPABILITY_PIPELINE:</p>
+            {coreDomains.map(d => (
+              <div class="domain-row">
+                <span class="domain-title">{d.domain}</span>
+                <span class="domain-stack">{d.stack}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. CULTURE PILLARS -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Operating Axioms</span>
+          <h2>The standard we hold ourselves to.</h2>
+          <p class="subhead">We don't build software to generate noise. We value depth of craft, mental clarity, and direct architectural responsibility.</p>
+        </div>
+
+        <div class="pillars-grid">
+          {pillars.map(p => (
+            <div class="pillar-card">
+              <span class="pillar-num" style={`color: ${p.accent}; border-color: ${p.accent}33;`}>{p.num}</span>
+              <span class="pillar-tag" style={`color: ${p.accent};`}>{p.tag}</span>
+              <h3>{p.title}</h3>
+              <p>{p.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. HOW WORK EVOLVES -->
+    <section class="section surface-bg border-y">
+      <div class="container">
+        <div class="section-head text-center">
+          <span class="eyebrow">Methodology</span>
+          <h2>How ideas progress at Evolvaer</h2>
+          <p class="subhead mx-auto">From an initial question to an enterprise foundation: our iterative engineering lifecycle.</p>
+        </div>
+
+        <div class="lifecycle-track">
+          {lifecycle.map((item) => (
+            <div class="track-step">
+              <div class="step-num">{item.step}</div>
+              <h4>{item.name}</h4>
+              <p>{item.task}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. OPEN ROLES OR DIRECT APPLICATION -->
+    <section id="roles" class="section">
+      <div class="container">
+        <div class="roles-wrap">
+          <div class="roles-head">
+            <div>
+              <span class="eyebrow">Opportunities</span>
+              <h2>Active Positions</h2>
+            </div>
+            <div class="status-indicator">
+              <span class={`status-circle ${hasRoles ? 'active' : 'dormant'}`}></span>
+              <span class="status-text">{hasRoles ? `${openRoles.length} positions open` : 'Talent pipeline active'}</span>
+            </div>
+          </div>
+
+          {hasRoles ? (
+            <div class="roles-list">
+              {openRoles.map(role => (
+                <div class="role-row">
+                  <div>
+                    <span class="role-dept">{role.department}</span>
+                    <h3>{role.title}</h3>
+                    <div class="role-meta"><span>{role.location}</span> · <span>{role.type}</span></div>
+                  </div>
+                  <a href={`/contact?role=${role.id}`} class="btn-primary">Apply for Role →</a>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div id="speculative-form" class="speculative-box">
+              <div class="speculative-info">
+                <h3>Speculative Applications & Technical Inquiries</h3>
+                <p>
+                  While we don't hire just to fill seats, we always evaluate exceptional software engineers, distributed systems architects, and machine learning researchers.
+                </p>
+                <div class="highlight-points">
+                  <div>✓ Direct review by technical founders</div>
+                  <div>✓ Response guaranteed within 48 business hours</div>
+                  <div>✓ Confidential evaluation</div>
+                </div>
+              </div>
+
+              <!-- Quick Speculative Intake Form -->
+              <form class="quick-form" action="https://api.web3forms.com/submit" method="POST">
+                <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE" />
+                <input type="hidden" name="category" value="Careers / Speculative" />
+                <input type="checkbox" name="botcheck" style="display:none" />
+
+                <div class="input-row">
+                  <div class="input-field">
+                    <label for="spec_name">Full Name *</label>
+                    <input type="text" id="spec_name" name="name" required placeholder="e.g. Dr. Ada Lovelace" />
+                  </div>
+                  <div class="input-field">
+                    <label for="spec_email">Email *</label>
+                    <input type="email" id="spec_email" name="email" required placeholder="ada@domain.com" />
+                  </div>
+                </div>
+
+                <div class="input-field">
+                  <label for="spec_links">Portfolio / GitHub / LinkedIn *</label>
+                  <input type="text" id="spec_links" name="profile_links" required placeholder="https://github.com/..." />
+                </div>
+
+                <div class="input-field">
+                  <label for="spec_focus">Core Capabilities & Engineering Focus *</label>
+                  <textarea id="spec_focus" name="message" rows="3" required placeholder="Describe your experience with systems architecture, backend engineering, or AI modeling..."></textarea>
+                </div>
+
+                <button type="submit" class="btn-primary w-full">Transmit Speculative Profile →</button>
+              </form>
+            </div>
+          )}
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  /* Root Layout Tokens */
+  .careers-root {
+    min-height: 100vh;
+  }
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+  .section {
+    padding: 6rem 0;
+  }
+  .surface-bg {
+    background-color: var(--color-surface);
+  }
+  .border-y {
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  /* Typography Utilities */
+  .eyebrow {
+    font-size: var(--text-xs);
+    font-weight: var(--weight-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--color-teal);
+    display: block;
+    margin-bottom: 0.6rem;
+  }
+  .gradient-text {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-teal) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .section-head {
+    max-width: 720px;
+    margin-bottom: 3.5rem;
+  }
+  .section-head.text-center {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+  .section-head h2 {
+    font-size: clamp(2rem, 3.5vw, 3.2rem);
+    font-weight: var(--weight-bold);
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+  }
+  .subhead {
+    font-size: var(--text-base);
+    color: var(--color-text-muted);
+    line-height: 1.7;
+    margin-top: 0.75rem;
+  }
+
+  /* 1. Hero Layout */
+  .careers-hero {
+    position: relative;
+    padding-top: 6.5rem;
+    padding-bottom: 5.5rem;
+    border-bottom: 1px solid var(--color-border);
+    overflow: hidden;
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 3.5rem;
+    align-items: center;
+  }
+  .badge-row {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    padding: 0.35rem 0.85rem;
+    border-radius: 9999px;
+    margin-bottom: 1.5rem;
+  }
+  .pulse-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--color-teal);
+    box-shadow: 0 0 10px var(--color-teal);
+  }
+  .badge-label {
+    font-size: var(--text-xs);
+    font-weight: var(--weight-semibold);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--color-text-muted);
+  }
+  .hero-copy h1 {
+    font-size: clamp(2.6rem, 4.5vw, 4.4rem);
+    font-weight: var(--weight-bold);
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+    margin-bottom: 1.25rem;
+  }
+  .lead {
+    font-size: var(--text-base);
+    color: var(--color-text-muted);
+    line-height: 1.75;
+    margin-bottom: 2rem;
+  }
+  .cta-cluster {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  /* Terminal Card */
+  .terminal-card {
+    background: #080c14;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  }
+  .terminal-header {
+    background: rgba(255, 255, 255, 0.03);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 0.75rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .dots {
+    display: flex;
+    gap: 6px;
+  }
+  .dots span {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+  }
+  .terminal-title {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.4);
+    letter-spacing: 0.05em;
+  }
+  .terminal-body {
+    padding: 1.5rem;
+    font-size: 0.82rem;
+    line-height: 1.6;
+    color: #e2e8f0;
+  }
+  .code-line { margin-bottom: 0.4rem; }
+  .c-teal { color: #22d3ee; }
+  .c-blue { color: #60a5fa; }
+  .c-violet { color: #c084fc; }
+  .terminal-divider {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.08);
+    margin: 1.25rem 0;
+  }
+  .term-status {
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.4);
+    margin-bottom: 0.75rem;
+  }
+  .domain-row {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0.75rem;
+    padding-left: 0.75rem;
+    border-left: 2px solid #22d3ee;
+  }
+  .domain-title {
+    font-weight: bold;
+    font-size: 0.8rem;
+    color: #f8fafc;
+  }
+  .domain-stack {
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  /* 2. Pillars Grid */
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.75rem;
+  }
+  .pillar-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+  .pillar-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--color-primary);
+  }
+  .pillar-num {
+    font-family: monospace;
+    font-size: var(--text-xs);
+    font-weight: bold;
+    border: 1px solid;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .pillar-tag {
+    font-size: var(--text-xs);
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-top: 0.5rem;
+  }
+  .pillar-card h3 {
+    font-size: var(--text-xl);
+    font-weight: var(--weight-bold);
+  }
+  .pillar-card p {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    line-height: 1.65;
+  }
+
+  /* 3. Lifecycle Track */
+  .lifecycle-track {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 1rem;
+  }
+  .track-step {
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    padding: 1.75rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .step-num {
+    font-family: monospace;
+    font-size: var(--text-xs);
+    font-weight: bold;
+    color: var(--color-teal);
+  }
+  .track-step h4 {
+    font-size: var(--text-base);
+    font-weight: var(--weight-bold);
+  }
+  .track-step p {
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+    line-height: 1.5;
+  }
+
+  /* 4. Roles & Intake Form */
+  .roles-wrap {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  .roles-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 2.5rem;
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 1.5rem;
+  }
+  .status-indicator {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .status-circle {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+  }
+  .status-circle.dormant { background: #64748b; }
+  .status-circle.active { background: var(--color-teal); box-shadow: 0 0 10px var(--color-teal); }
+  .status-text {
+    font-size: var(--text-xs);
+    font-weight: var(--weight-semibold);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-text-muted);
+  }
+
+  .speculative-box {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 3.5rem;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 16px;
+    padding: 3rem;
+  }
+  .speculative-info h3 {
+    font-size: var(--text-2xl);
+    font-weight: var(--weight-bold);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+  .speculative-info p {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+  .highlight-points {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    font-size: var(--text-xs);
+    font-weight: var(--weight-semibold);
+    color: var(--color-teal);
+  }
+
+  /* Quick Form */
+  .quick-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .input-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .input-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+  .input-field label {
+    font-size: var(--text-xs);
+    font-weight: var(--weight-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-text-muted);
+  }
+  .input-field input, .input-field textarea {
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-main);
+    padding: 0.7rem 0.9rem;
+    border-radius: 6px;
+    font-size: var(--text-sm);
+    font-family: inherit;
+    transition: border-color 0.2s;
+  }
+  .input-field input:focus, .input-field textarea:focus {
+    outline: none;
+    border-color: var(--color-primary);
+  }
+  .w-full { width: 100%; }
+
+  /* Buttons */
+  .btn-primary {
+    background: var(--color-primary);
+    color: #fff !important;
+    padding: 0.75rem 1.6rem;
+    border-radius: 6px;
+    font-size: var(--text-sm);
+    font-weight: var(--weight-semibold);
+    text-decoration: none;
+    display: inline-flex;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.2s;
+  }
+  .btn-primary:hover { opacity: 0.92; }
+  .btn-outline {
+    background: var(--color-surface);
+    color: var(--color-text-main);
+    border: 1px solid var(--color-border);
+    padding: 0.75rem 1.6rem;
+    border-radius: 6px;
+    font-size: var(--text-sm);
+    font-weight: var(--weight-semibold);
+    text-decoration: none;
+    transition: border-color 0.2s;
+  }
+  .btn-outline:hover { border-color: var(--color-primary); }
+
+  @media (max-width: 900px) {
+    .hero-grid { grid-template-columns: 1fr; }
+    .speculative-box { grid-template-columns: 1fr; padding: 2rem; }
+    .input-row { grid-template-columns: 1fr; }
+  }
+</style>

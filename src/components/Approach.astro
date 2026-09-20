@@ -1,0 +1,115 @@
+---
+// src/components/Approach.astro
+const stages = [
+  { step: "01", name: "Explore", desc: "Horizon scanning and problem domain validation." },
+  { step: "02", name: "Research", desc: "Computational modeling, architectures, and feasibility." },
+  { step: "03", name: "Engineer", desc: "Rigorous prototyping and technical implementation." },
+  { step: "04", name: "Build", desc: "Production deployment with enterprise-grade resilience." },
+  { step: "05", name: "Scale", desc: "Operational optimization and infrastructure growth." },
+  { step: "06", name: "Impact", desc: "Measurable commercial and technological value delivery." },
+];
+---
+<section id="approach" class="approach-section">
+  <div class="container">
+    <div class="section-title-wrap">
+      <span class="eyebrow">Methodology</span>
+      <h2>Our Approach</h2>
+      <p class="subheading">From nascent theoretical concepts to high-impact enterprise reality[cite: 1].</p>
+    </div>
+
+    <div class="pipeline-grid">
+      {stages.map((stage) => (
+        <div class="stage-card">
+          <div class="stage-top">
+            <span class="stage-number">{stage.step}</span>
+            <div class="pulse-indicator"></div>
+          </div>
+          <h3 class="stage-name">{stage.name}</h3>
+          <p class="stage-desc">{stage.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .approach-section {
+    padding: 5rem 1.5rem;
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+    background-color: var(--color-surface);
+  }
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .section-title-wrap {
+    text-align: center;
+    margin-bottom: 3.5rem;
+  }
+  .eyebrow {
+    font-size: var(--text-xs);
+    font-weight: var(--weight-semibold);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--color-teal);
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  .section-title-wrap h2 {
+    font-size: var(--text-3xl);
+    font-weight: var(--weight-bold);
+    letter-spacing: -0.02em;
+  }
+  .subheading {
+    font-size: var(--text-base);
+    color: var(--color-text-muted);
+    margin-top: 0.5rem;
+  }
+  .pipeline-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+  }
+  .stage-card {
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 1.5rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+  .stage-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--color-primary);
+  }
+  .stage-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  .stage-number {
+    font-size: var(--text-xs);
+    font-weight: var(--weight-bold);
+    color: var(--color-primary);
+    letter-spacing: 0.05em;
+  }
+  .pulse-indicator {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--color-teal);
+  }
+  .stage-name {
+    font-size: var(--text-lg);
+    font-weight: var(--weight-bold);
+    margin-bottom: 0.5rem;
+  }
+  .stage-desc {
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+    line-height: 1.5;
+  }
+</style>

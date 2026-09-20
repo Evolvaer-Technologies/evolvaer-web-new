@@ -1,0 +1,264 @@
+---
+// src/components/BrandValues.astro
+const values = [
+  { name: "Trustworthy", desc: "Built with structural integrity, responsible defaults, and predictable execution.", icon: "shield", accent: "var(--color-teal)" },
+  { name: "Inventive", desc: "Challenging conventional assumptions to discover new technical horizons.", icon: "bulb", accent: "var(--color-primary)" },
+  { name: "Purposeful", desc: "Pursuing technology only where it creates genuine real-world value.", icon: "compass", accent: "var(--color-violet)" },
+  { name: "Intelligent", desc: "Applying rigorous computational depth and advanced pattern recognition.", icon: "cube", accent: "var(--color-teal)" },
+  { name: "Collaborative", desc: "Connecting multi-disciplinary perspectives to build greater collective capability.", icon: "users", accent: "var(--color-primary)" },
+  { name: "Ambitious", desc: "Designing enduring systems and ventures built to scale over generations.", icon: "flag", accent: "var(--color-violet)" }
+];
+---
+
+<section class="principles-matrix-section">
+  <div class="matrix-container">
+    <div class="matrix-header">
+      <div class="tag-wrapper">
+        <span class="mono-badge">FOUNDATIONAL AXIOMS</span>
+        <span class="rule-line"></span>
+      </div>
+      <h2>The Core <span class="gradient-text">Brand Principles.</span></h2>
+      <p class="matrix-sub">Technologies and product roadmaps will inevitably evolve. The principles guiding how we build remain unyielding.</p>
+    </div>
+
+    <div class="matrix-grid">
+      {values.map((v, index) => (
+        <div class="matrix-card" style={`--accent-color: ${v.accent};`}>
+          <div class="card-edge-glow"></div>
+          <div class="card-inner">
+            <div class="card-top-row">
+              <div class="icon-frame">
+                {v.icon === "shield" && (
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                  </svg>
+                )}
+                {v.icon === "bulb" && (
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <path d="M9 18h6m-4 4h2m-6-8a7 7 0 1 1 8 0c-.5.8-1 1.5-1 2H10c0-.5-.5-1.2-1-2z"/>
+                  </svg>
+                )}
+                {v.icon === "compass" && (
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <circle cx="12" cy="12" r="10"/>
+                    <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/>
+                  </svg>
+                )}
+                {v.icon === "cube" && (
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                    <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                    <line x1="12" y1="22.08" x2="12" y2="12"/>
+                  </svg>
+                )}
+                {v.icon === "users" && (
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                    <circle cx="9" cy="7" r="4"/>
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                  </svg>
+                )}
+                {v.icon === "flag" && (
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/>
+                    <line x1="4" y1="22" x2="4" y2="15"/>
+                  </svg>
+                )}
+              </div>
+              <span class="card-index">0{index + 1}</span>
+            </div>
+            
+            <div class="card-text-block">
+              <h3>{v.name}</h3>
+              <p>{v.desc}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .principles-matrix-section {
+    background-color: var(--color-bg);
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+    padding: 7rem 1.5rem;
+    position: relative;
+  }
+  
+  .matrix-container {
+    max-width: 1240px;
+    margin: 0 auto;
+  }
+
+  .matrix-header {
+    margin-bottom: 4rem;
+    max-width: 680px;
+  }
+
+  .tag-wrapper {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .mono-badge {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    color: var(--color-primary);
+  }
+
+  .rule-line {
+    width: 2.5rem;
+    height: 1px;
+    background-color: var(--color-primary);
+    opacity: 0.4;
+  }
+
+  .matrix-header h2 {
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    font-weight: var(--weight-bold);
+    letter-spacing: -0.035em;
+    line-height: 1.1;
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-teal) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .matrix-sub {
+    font-size: var(--text-base);
+    color: var(--color-text-muted);
+    line-height: 1.75;
+    margin-top: 1rem;
+  }
+
+  .matrix-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.75rem;
+  }
+
+  .matrix-card {
+    position: relative;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 18px;
+    padding: 2.5rem;
+    overflow: hidden;
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s ease, box-shadow 0.35s ease;
+  }
+
+  .matrix-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--accent-color);
+    box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.08);
+  }
+
+  .card-edge-glow {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 150px;
+    height: 150px;
+    background: radial-gradient(circle, var(--accent-color) 0%, transparent 70%);
+    opacity: 0.05;
+    filter: blur(25px);
+    pointer-events: none;
+    transition: opacity 0.35s ease;
+  }
+
+  .matrix-card:hover .card-edge-glow {
+    opacity: 0.18;
+  }
+
+  .card-inner {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+
+  .card-top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .icon-frame {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-color);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+
+  .matrix-card:hover .icon-frame {
+    background-color: rgba(255, 255, 255, 0.02);
+    border-color: var(--accent-color);
+  }
+
+  /* Scaled down SVG size */
+  .icon-frame svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .card-index {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--color-text-muted);
+    opacity: 0.4;
+  }
+
+  .card-text-block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .matrix-card h3 {
+    font-size: 1.25rem;
+    font-weight: var(--weight-semibold);
+    color: var(--color-text-main);
+    letter-spacing: -0.01em;
+  }
+
+  .matrix-card p {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    line-height: 1.65;
+  }
+
+  @media (max-width: 1024px) {
+    .matrix-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .matrix-grid {
+      grid-template-columns: 1fr;
+    }
+    .principles-matrix-section {
+      padding: 5rem 1rem;
+    }
+  }
+</style>

@@ -1,0 +1,86 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../components/Navbar.astro';
+---
+
+<BaseLayout title="Submission Received | Evolvaer Technologies">
+  <Navbar />
+  <main class="thanks-wrapper bg-grid">
+    <div class="ambient-glow"></div>
+    <div class="card thanks-card">
+      <div class="check-icon">✓</div>
+      <h1>Inquiry Received</h1>
+      <p class="lead">
+        Thank you for contacting Evolvaer Technologies. Our engineering leads evaluate all project specifications directly and respond within 24 hours.
+      </p>
+      <a href="/" class="btn-primary">Return to Overview</a>
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  .thanks-wrapper {
+    min-height: 75vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 1.5rem;
+    position: relative;
+  }
+  .ambient-glow {
+    position: absolute;
+    width: 500px;
+    height: 300px;
+    background: radial-gradient(circle, var(--glow-color) 0%, transparent 70%);
+    filter: blur(80px);
+  }
+  .thanks-card {
+    position: relative;
+    z-index: 2;
+    max-width: 540px;
+    text-align: center;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 3rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+  }
+  .check-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background-color: rgba(16, 185, 129, 0.12);
+    color: var(--color-teal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border: 1px solid var(--color-teal);
+  }
+  h1 {
+    font-size: var(--text-3xl);
+    font-weight: var(--weight-bold);
+  }
+  .lead {
+    font-size: var(--text-base);
+    color: var(--color-text-muted);
+    line-height: 1.6;
+  }
+  .btn-primary {
+    background-color: var(--color-primary);
+    color: #ffffff;
+    font-size: var(--text-sm);
+    font-weight: var(--weight-semibold);
+    padding: 0.75rem 1.75rem;
+    border-radius: 6px;
+    margin-top: 0.5rem;
+    transition: opacity 0.2s ease;
+  }
+  .btn-primary:hover {
+    opacity: 0.92;
+  }
+</style>

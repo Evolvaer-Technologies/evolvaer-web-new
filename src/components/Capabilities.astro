@@ -1,0 +1,79 @@
+---
+const capabilities = [
+  { step: "01", title: "Research", desc: "Rigorous feasibility assessment, architectural modelling, and exploration of nascent technologies." },
+  { step: "02", title: "Engineer", desc: "Production-grade system development with precision, security, and computational scalability." },
+  { step: "03", title: "Scale", desc: "Commercialisation into robust products designed to resolve real-world industry bottlenecks." }
+];
+---
+<section id="capabilities" class="capabilities-section">
+  <div class="section-header">
+    <h2>Disciplined Innovation</h2>
+    <p class="section-sub">A structured approach to turning technical research into real-world systems.</p>
+  </div>
+
+  <div class="grid">
+    {capabilities.map((item) => (
+      <div class="card">
+        <span class="card-step">{item.step}</span>
+        <h3>{item.title}</h3>
+        <p>{item.desc}</p>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  .capabilities-section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 5rem 1.5rem;
+  }
+  .section-header {
+    text-align: center;
+    margin-bottom: 3.5rem;
+  }
+  h2 {
+    font-size: var(--text-3xl);
+    font-weight: var(--weight-bold);
+    letter-spacing: -0.02em;
+  }
+  .section-sub {
+    color: var(--color-text-muted);
+    font-size: var(--text-base);
+    margin-top: 0.5rem;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+  .card {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    padding: 2.25rem;
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease;
+  }
+  .card:hover {
+    transform: translateY(-2px);
+    border-color: var(--color-primary);
+  }
+  .card-step {
+    font-size: var(--text-xs);
+    font-weight: var(--weight-bold);
+    color: var(--color-primary);
+    display: block;
+    margin-bottom: 0.75rem;
+    letter-spacing: 0.1em;
+  }
+  h3 {
+    font-size: var(--text-xl);
+    font-weight: var(--weight-semibold);
+    margin-bottom: 0.75rem;
+  }
+  p {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    line-height: 1.6;
+  }
+</style>

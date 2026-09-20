@@ -1,0 +1,66 @@
+---
+// src/components/about/AboutNarrative.astro
+const principles = [
+  { num: "01", title: "Purposeful", desc: "We pursue technology where it can create meaningful value, not simply because it is new." },
+  { num: "02", title: "Inventive", desc: "We stay curious, challenge assumptions and remain willing to explore unconventional possibilities." },
+  { num: "03", title: "Trustworthy", desc: "We believe useful technology must be responsible, understandable and worthy of the people who rely on it." },
+  { num: "04", title: "Collaborative", desc: "The strongest ideas emerge when different disciplines, experiences and perspectives are allowed to intersect." },
+];
+
+const evolution = [
+  "Explore what is changing",
+  "Understand what matters",
+  "Test what is possible",
+  "Engineer what is useful",
+  "Build what deserves to exist",
+];
+---
+
+<section class="py-20 bg-[#07111D] text-white">
+  <div class="evolvaer-container px-4 sm:px-6 lg:px-8">
+    <!-- Principles Grid -->
+    <div>
+      <span class="text-[0.64rem] font-semibold uppercase tracking-[0.3em] text-[#22D3EE]">Principles[cite: 1]</span>
+      <h2 class="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">What changes. What doesn't.</h2>
+      <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {principles.map(p => (
+          <div class="rounded-2xl border border-white/10 bg-white/[0.03] p-6">
+            <span class="text-xs font-bold text-[#60A5FA]">{p.num}</span>
+            <h3 class="mt-3 text-lg font-semibold">{p.title}</h3>
+            <p class="mt-2 text-xs leading-relaxed text-white/50">{p.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Evolution By Design List -->
+    <div class="mt-20 border-t border-white/10 pt-16">
+      <span class="text-[0.64rem] font-semibold uppercase tracking-[0.3em] text-[#22D3EE]">Evolution by design</span>
+      <h2 class="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">Progress is an iterative evolution.</h2>
+      <div class="mt-8 divide-y divide-white/10 border-y border-white/10">
+        {evolution.map((step, i) => (
+          <div class="flex items-center justify-between py-4">
+            <span class="text-sm font-semibold text-white/80"><span class="mr-4 text-[#22D3EE]/70 font-mono text-xs">0{i+1}</span>{step}</span>
+            <span class="text-xs text-white/30">↳</span>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Long-term Ambition & CTA -->
+    <div class="mt-24 text-center max-w-3xl mx-auto">
+      <span class="text-[0.64rem] font-semibold uppercase tracking-[0.3em] text-white/40">Long-term ambition</span>
+      <h2 class="mt-4 text-[clamp(2.2rem,4vw,3.6rem)] font-semibold leading-tight tracking-tight">
+        To build an enduring technology company <span class="brand-gradient">that keeps evolving.</span>
+      </h2>
+      <p class="mt-6 text-sm text-white/50 leading-relaxed">
+        Not defined by one product. Not limited to one technology. Built to keep exploring where meaningful possibilities emerge.
+      </p>
+
+      <div class="mt-10 flex flex-wrap justify-center gap-4">
+        <a href="/what-we-do" class="btn-primary">Explore what we do →</a>
+        <a href="/ventures" class="rounded-full border border-white/15 px-6 py-3 text-sm font-semibold text-white/80 hover:bg-white/5 transition">Explore ventures ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
